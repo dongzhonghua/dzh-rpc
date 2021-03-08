@@ -1,4 +1,4 @@
-package xyz.dsvshx.client.future;
+package xyz.dsvshx.rpc.future;
 
 import xyz.dsvshx.common.protocol.RpcResponse;
 

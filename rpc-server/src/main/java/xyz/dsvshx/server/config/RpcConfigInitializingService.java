@@ -1,4 +1,4 @@
-package xyz.dsvshx.client.config;
+package xyz.dsvshx.server.config;
 
 import java.util.Set;
 
@@ -11,7 +11,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 
 import lombok.extern.slf4j.Slf4j;
-import xyz.dsvshx.client.proxy.ProxyFactory;
 import xyz.dsvshx.common.annotation.RpcInterface;
 
 /**
@@ -20,7 +19,7 @@ import xyz.dsvshx.common.annotation.RpcInterface;
  */
 @Configuration
 @Slf4j
-public class RpcConfig implements ApplicationContextAware, InitializingBean {
+public class RpcConfigInitializingService implements ApplicationContextAware, InitializingBean {
     private ApplicationContext applicationContext;
 
     @Override
@@ -36,9 +35,12 @@ public class RpcConfig implements ApplicationContextAware, InitializingBean {
         // 获取 @RpcInterfac 标注的接口
         Set<Class<?>> typesAnnotatedWith = reflections.getTypesAnnotatedWith(RpcInterface.class);
         for (Class<?> aClass : typesAnnotatedWith) {
-            // 创建代理对象，并注册到 spring 上下文。
-            beanFactory.registerSingleton(aClass.getSimpleName(), ProxyFactory.create(aClass));
-            log.info("注册bean:{}", aClass.getSimpleName());
+            if (aClass.isInterface()) {
+                // 创建代理对象，并注册到 spring 上下文。
+                // beanFactory.registerSingleton(aClass.getSimpleName(), RpcClientJdkDynamicProxy.create(aClass));
+                // log.info("注册bean:{}", aClass.getSimpleName());
+            }
         }
     }
+
 }

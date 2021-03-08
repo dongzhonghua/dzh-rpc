@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rpc-client</artifactId>
+    <artifactId>rpc-core</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -18,23 +18,15 @@
     <dependencies>
         <dependency>
             <groupId>xyz.dsvshx</groupId>
-            <artifactId>rpc-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>xyz.dsvshx</groupId>
             <artifactId>rpc-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

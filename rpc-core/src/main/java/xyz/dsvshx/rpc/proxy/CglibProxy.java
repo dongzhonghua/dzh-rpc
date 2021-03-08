@@ -1,4 +1,4 @@
-package xyz.dsvshx.server.proxy;
+package xyz.dsvshx.rpc.proxy;
 
 import java.lang.reflect.Method;
 
@@ -7,7 +7,6 @@ import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
 
 import lombok.extern.slf4j.Slf4j;
-import xyz.dsvshx.server.HelloServiceImpl;
 
 /**
  * @author dongzhonghua
@@ -55,7 +54,5 @@ public class CglibProxy implements MethodInterceptor {
         classes[0] = stringClass;
         Object[] o = new Object[1];
         o[0] = "xxxx";
-        Object sayHello = new CglibProxy().invoke(HelloServiceImpl.class, "sayHello", classes, o);
-        System.out.println(sayHello);
     }
 }

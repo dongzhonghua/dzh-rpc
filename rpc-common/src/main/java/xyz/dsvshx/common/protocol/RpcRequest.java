@@ -2,7 +2,12 @@ package xyz.dsvshx.common.protocol;
 
 import lombok.Data;
 import lombok.ToString;
+import xyz.dsvshx.common.entity.RpcServiceProperties;
 
+/**
+ * @author dongzhonghua
+ * Created on 2021-03-06
+ */
 
 @Data
 @ToString
@@ -27,4 +32,20 @@ public class RpcRequest {
      * 入参
      */
     private Object[] parameters;
+
+    /**
+     * 服务的version
+     */
+    private String version;
+
+    /**
+     * 服务组
+     */
+    private String group;
+
+    public RpcServiceProperties toRpcProperties() {
+        return RpcServiceProperties.builder().serviceName(this.getClassName())
+                .version(this.getVersion())
+                .group(this.getGroup()).build();
+    }
 }

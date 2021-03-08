@@ -7,6 +7,7 @@
         <module>rpc-common</module>
         <module>rpc-server</module>
         <module>rpc-client</module>
+        <module>rpc-core</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -54,10 +55,10 @@
             <artifactId>reflections</artifactId>
             <version>0.9.11</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.slf4j</groupId>-->
+        <!--            <artifactId>slf4j-log4j12</artifactId>-->
+        <!--        </dependency>-->
 
     </dependencies>
 

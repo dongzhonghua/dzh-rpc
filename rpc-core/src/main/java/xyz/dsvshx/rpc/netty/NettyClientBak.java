@@ -1,4 +1,5 @@
-package xyz.dsvshx.client.netty;
+package xyz.dsvshx.rpc.netty;
+
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +28,7 @@ import xyz.dsvshx.common.protocol.serialize.JSONSerializer;
  * Created on 2021-03-03
  */
 @Slf4j
-public class NettyClient {
+public class NettyClientBak {
     private EventLoopGroup eventLoopGroup;
     private Channel channel;
     private ClientHandler clientHandler;
@@ -37,7 +38,12 @@ public class NettyClient {
     private static final int TIMEOUT = 5000;
 
 
-    public NettyClient(String host, Integer port) {
+    /**
+     * 原始的netty客户端，但是这种方式只能每一次都要发起连接，不能重用channel，所以新的客户端在{{@link NettyRpcClient}}
+     * @param host
+     * @param port
+     */
+    public NettyClientBak(String host, Integer port) {
         this.host = host;
         this.port = port;
     }
@@ -108,5 +114,6 @@ public class NettyClient {
         channel.closeFuture().syncUninterruptibly();
     }
 }
+
 
 
