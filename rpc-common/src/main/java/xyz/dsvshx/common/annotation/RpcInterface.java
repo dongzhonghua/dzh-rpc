@@ -6,6 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * 目前应该没有用了，直接用RpcService来代替了。
  * @author dongzhonghua
  * Created on 2021-03-04
  */
